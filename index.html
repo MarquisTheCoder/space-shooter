@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Shooter Game</title>
+</head>
+
+<body>
+<style>
+    html{
+        background-image: url('https://img.freepik.com/free-vector/blue-sky-with-clouds-background-elegant_1017-26302.jpg?w=2000');
+        background-repeat: no-repeat;
+        background-size: cover;
+        user-select: none; /* supported by Chrome and Opera */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+    }
+</style>
+    <script src="js/characters.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/mapping.js"></script>
+
+
+    <div id="map-box">
+
+    <img id="player" width="50" height="50" src="https://thumbnail.imgbin.com/18/5/12/imgbin-red-ball-4-red-ball-2-red-ball-5-android-android-bBFNUgNywE65q6TegM9m4wQfu_t.jpg">
+    </div>
+
+
+    <script>
+
+            window.onload = (event) => {
+                    console.log('The page has fully loaded');
+                    let player = character.player;
+                    player.playerId = document.getElementById('player');
+                    controller.player.playerMovement(player);
+
+                    document.addEventListener('click', function (event){
+                            controller.player.attack.projectile(player);
+                    })
+
+            }
+
+    </script>
+
+</body>
+</html>
