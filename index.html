@@ -8,9 +8,14 @@
 <body>
 <style>
     html{
-        background-image: url('https://img.freepik.com/free-vector/blue-sky-with-clouds-background-elegant_1017-26302.jpg?w=2000');
-        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+        background: url('images/earthview/background.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
         background-size: cover;
+
         user-select: none; /* supported by Chrome and Opera */
         -webkit-user-select: none; /* Safari */
         -khtml-user-select: none; /* Konqueror HTML */
@@ -24,8 +29,10 @@
 
 
     <div id="map-box">
+        <div id="player">
+            <img width="50" height="50" src="images/player.png">
+        </div>
 
-    <img id="player" width="50" height="50" src="https://thumbnail.imgbin.com/18/5/12/imgbin-red-ball-4-red-ball-2-red-ball-5-android-android-bBFNUgNywE65q6TegM9m4wQfu_t.jpg">
     </div>
 
 
@@ -36,8 +43,11 @@
                     let player = character.player;
                     player.playerId = document.getElementById('player');
                     controller.player.playerMovement(player);
-
-                    document.addEventListener('click', function (event){
+                    controller.player.setPosition(player, 60, 0)
+                    document.addEventListener('mousedown', function (event){
+                            console.log('shooting bullet');
+                            let audio = new Audio('https://www.myinstants.com/media/sounds/chidori_sound.mp3');
+                            audio.play();
                             controller.player.attack.projectile(player);
                     })
 

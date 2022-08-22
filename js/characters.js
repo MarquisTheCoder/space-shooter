@@ -17,7 +17,9 @@ let character = {
                 playerId: 0,
                 hasWeapon: false,
                 positionX: 0,
-                positionY: 0
+                positionY: 60,
+                getPositionX: () => character.player.positionX,
+                getPositionY: () => character.player.positionY
                 }
 
 }
