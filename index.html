@@ -50,7 +50,11 @@
                             audio.play();
                             controller.player.attack.projectile(player);
                     });
-                    controller.enemy.createEnemy(character.enemy);
+
+                    controller.enemy.createEnemy();
+                    const random = () => Math.random()*600 + 400;
+                    controller.enemy.setEnemyPosition(character.enemy, random(), random());
+
 
             }
 

@@ -94,26 +94,24 @@ let controller = {
 
 
         enemy:{
-                createEnemy: function(enemyObj){
+                createEnemy: function(){
                         let enemy = document.createElement('img');
                         enemy.setAttribute('src', 'https://static.wikia.nocookie.net/gears_esports_gamepedia_en/image' +
                                 's/7/71/Enemylogo_square.png');
                         enemy.setAttribute('height','40');
                         enemy.setAttribute('width', '45');
                         enemy.setAttribute('position', 'absolute');
-                        console.log(`enemy: ${enemyObj.positionX}px`)
-                        enemy.setAttribute('left', `${enemyObj.positionX}px`);
+                        enemy.setAttribute('left', `${Math.random()*101+500}`);
                         document.getElementById('map-box').appendChild(enemy);
+                        character.enemy.enemyId = enemy;
                 },
                 setEnemyPosition: function (enemy, x, y){
-                        enemy.positionX += Math.random() * 101 + 600;
+                        enemy.positionX += Math.random() * 1000;
                         enemy.positionY += y;
                         enemy.enemyId.style.position = 'absolute';
-                        enemy.playerId.style.left =
-                                        enemy.positionX + 'px';
+                        enemy.enemyId.style.left = x + 'px';
 
-                        enemy.playerId.style.top =
-                                enemy.positionY + 'px';
+                        enemy.enemyId.style.top = y + 'px';
                 }
         }
 }
