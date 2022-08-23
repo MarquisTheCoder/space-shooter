@@ -43,6 +43,8 @@ let controller = {
 
 
                         let range = 0;
+
+
                         let fizzOutTimer = setInterval(() => {
 
                                 if(range++ < 10){

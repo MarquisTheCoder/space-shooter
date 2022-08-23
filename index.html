@@ -43,10 +43,12 @@
                     let player = character.player;
                     player.playerId = document.getElementById('player');
                     controller.player.playerMovement(player);
-                    controller.player.setPosition(player, 60, 0)
+                    controller.player.setPosition(player, 60, 0);
+
+                    let lastClick = 0;
+
                     document.addEventListener('mousedown', function (event){
-                            console.log('shooting bullet');
-                            let audio = new Audio('https://www.myinstants.com/media/sounds/chidori_sound.mp3');
+                            let audio = new Audio('sounds/laser-gun.mp3');
                             audio.play();
                             controller.player.attack.projectile(player);
                     });
