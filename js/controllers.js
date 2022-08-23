@@ -108,7 +108,7 @@ let controller = {
                         character.enemy.enemyId = enemy;
                 },
                 setEnemyPosition: function (enemy, x, y){
-                        enemy.positionX += Math.random() * 1000;
+                        enemy.positionX += x;
                         enemy.positionY += y;
                         enemy.enemyId.style.position = 'absolute';
                         enemy.enemyId.style.left = x + 'px';

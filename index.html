@@ -16,11 +16,13 @@
         -o-background-size: cover;
         background-size: cover;
 
-        user-select: none; /* supported by Chrome and Opera */
-        -webkit-user-select: none; /* Safari */
-        -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+
+
     }
 </style>
     <script src="js/characters.js"></script>
@@ -30,7 +32,7 @@
 
     <div id="map-box">
         <div id="player">
-            <img width="50" height="50" src="images/player.png">
+            <img width="125" height="80" src="images/ufo2.png">
         </div>
 
     </div>
@@ -55,7 +57,18 @@
 
                     controller.enemy.createEnemy();
                     const random = () => Math.random()*600 + 400;
+
                     controller.enemy.setEnemyPosition(character.enemy, random(), random());
+
+                    let range = 0;
+                    let intervalId = setInterval(()=>{
+
+                            if(range++ < 30){
+                                    character.enemy.positionX += SPEED * range;
+                                    controller.enemy.setEnemyPosition(character.enemy, character.enemy.positionX,
+                                    character.enemy.positionY)
+                            }
+                    }, 10000)
 
 
             }
