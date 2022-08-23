@@ -87,21 +87,33 @@ let controller = {
                                                 }
                                                 controller.player.setPosition(playerObj, 0, SPEED);
                                                 break;
-                                        // case LEFT:
-                                        // case 'ArrowLeft':
-                                        //         controller.player.setPosition(playerObj, -SPEED, 0);
-                                        //         break;
-                                        // case RIGHT:
-                                        // case 'ArrowRight':
-                                        //         controller.player.setPosition(playerObj, SPEED, 0);
-                                        //         break;
                                 }
                         });
                 }
         },
-        enemy:{
-                createEnemy: function(){
 
+
+        enemy:{
+                createEnemy: function(enemyObj){
+                        let enemy = document.createElement('img');
+                        enemy.setAttribute('src', 'https://static.wikia.nocookie.net/gears_esports_gamepedia_en/image' +
+                                's/7/71/Enemylogo_square.png');
+                        enemy.setAttribute('height','40');
+                        enemy.setAttribute('width', '45');
+                        enemy.setAttribute('position', 'absolute');
+                        console.log(`enemy: ${enemyObj.positionX}px`)
+                        enemy.setAttribute('left', `${enemyObj.positionX}px`);
+                        document.getElementById('map-box').appendChild(enemy);
+                },
+                setEnemyPosition: function (enemy, x, y){
+                        enemy.positionX += Math.random() * 101 + 600;
+                        enemy.positionY += y;
+                        enemy.enemyId.style.position = 'absolute';
+                        enemy.playerId.style.left =
+                                        enemy.positionX + 'px';
+
+                        enemy.playerId.style.top =
+                                enemy.positionY + 'px';
                 }
         }
 }
