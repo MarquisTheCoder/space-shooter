@@ -76,7 +76,7 @@ let controller = {
                                 switch(event.key){
                                         case UP:
                                         case 'ArrowUp':
-                                                if(playerObj.positionY <= 40){
+                                                if(playerObj.positionY <= 80){
                                                         break;
                                                 }
                                                 controller.player.setPosition(playerObj, 0, -SPEED);
@@ -98,10 +98,9 @@ let controller = {
         enemy:{
                 createEnemy: function(){
                         let enemy = document.createElement('img');
-                        enemy.setAttribute('src', 'https://static.wikia.nocookie.net/gears_esports_gamepedia_en/image' +
-                                's/7/71/Enemylogo_square.png');
-                        enemy.setAttribute('height','40');
-                        enemy.setAttribute('width', '45');
+                        enemy.setAttribute('src', '../images/enemy.png');
+                        enemy.setAttribute('height','60');
+                        enemy.setAttribute('width', '90');
                         enemy.setAttribute('position', 'absolute');
                         enemy.setAttribute('left', `${Math.random()*101+500}`);
                         document.getElementById('map-box').appendChild(enemy);

@@ -16,6 +16,7 @@
         -o-background-size: cover;
         background-size: cover;
 
+        overflow: hidden;
         user-select: none;
         -webkit-user-select: none;
         -khtml-user-select: none;
@@ -45,7 +46,7 @@
                     let player = character.player;
                     player.playerId = document.getElementById('player');
                     controller.player.playerMovement(player);
-                    controller.player.setPosition(player, 60, 0);
+                    controller.player.setPosition(player, 40, 0);
 
                     let lastClick = 0;
 
