@@ -15,6 +15,7 @@ let character = {
         player: {
                 health: 100,
                 strength: 20,
+                speed: 25,
                 playerId: document.getElementById('player'),
                 hasWeapon: false,
                 positionX: 0,

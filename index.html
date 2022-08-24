@@ -48,36 +48,31 @@
 
             window.onload = (event) => {
 
-                    let player = character.player;
-                    player.playerId = document.getElementById('player');
 
-                    controller.player.playerMovement(player);
-                    controller.player.setPosition(player, 40, 325);
 
                     let lastClick = 0;
                     let shotsFired = 0;
 
-                    document.addEventListener('mousedown', function (event){
-                            let audio = new Audio('sounds/laser-gun.mp3');
+                    // document.addEventListener('mousedown', function (event){
+                    //         let audio = new Audio('sounds/laser-gun.mp3');
+                    //
+                    //         audio.play();
+                    //         shotsFired += 1;
+                    //         document.getElementById('shots-fired').innerHTML = `shots-fired: <span style="color: red">${shotsFired}</span>`;
+                    //         controller.player.attack.projectile(player);
+                    // });
 
-                            audio.play();
-                            shotsFired += 1;
-                            document.getElementById('shots-fired').innerHTML = `shots-fired: <span style="color: red">${shotsFired}</span>`;
-                            controller.player.attack.projectile(player);
-                    });
 
-                    controller.enemy.createEnemy();
-                    const random = () => Math.random()*600 + 400;
 
                     // controller.enemy.setEnemyPosition(character.enemy, random(), random());
 
                     let range = 800;
 
-                    let intervalId = setInterval(()=>{
-                            if(range-- > 150){
-                                    controller.enemy.setEnemyPosition(character.enemy,range,400)
-                            }
-                    }, 1000)
+                    // let intervalId = setInterval(()=>{
+                    //         if(range-- > 150){
+                    //                 controller.enemy.setEnemyPosition(character.enemy,range,400)
+                    //         }
+                    // }, 1000)
 
 
             }
