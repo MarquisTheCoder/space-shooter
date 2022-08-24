@@ -50,6 +50,7 @@ let controller = {
                                 if(range++ < 10){
                                         console.log(range)
                                         console.log(projectileImg.style.left)
+                                        document.getElementById('projectile-position').innerText = `projectile-position: ${playerPosX}`
                                         playerPosX += BULLET_SPEED * range;
                                         projectileImg.style.paddingLeft = `${playerPosX}px`;
                                 }else{
@@ -98,8 +99,8 @@ let controller = {
         enemy:{
                 createEnemy: function(){
                         let enemy = document.createElement('img');
-                        enemy.setAttribute('src', '../images/enemy.png');
-                        enemy.setAttribute('height','60');
+                        enemy.setAttribute('src', '../images/enemy.webp');
+                        enemy.setAttribute('height','90');
                         enemy.setAttribute('width', '90');
                         enemy.setAttribute('position', 'absolute');
                         enemy.setAttribute('left', `${Math.random()*101+500}`);
@@ -113,6 +114,16 @@ let controller = {
                         enemy.enemyId.style.left = x + 'px';
 
                         enemy.enemyId.style.top = y + 'px';
+                }
+        },
+
+        projectileEnemyCollision: {
+                killEnemy: function (enemyId){
+                       let mapBox = document.getElementById('map-box');
+                       mapBox.removeChild(enemyId);
+                },
+                check: function(projectile, enemy){
+
                 }
         }
 }
