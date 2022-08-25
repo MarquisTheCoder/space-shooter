@@ -15,7 +15,7 @@
 
 function Player(playerObject){
         
-        map.players.append(Player);
+        map.players.push(Player);
         
         this.speed = 12.2344;
         this.health = 100.0;
@@ -51,7 +51,7 @@ function Player(playerObject){
 function Projectile(playerObject, enemyObject){
        
         
-        map.projectiles.append(Projectile);
+        map.projectiles.push(Projectile);
         
         this.speed = 20.0;
         this.xPosition = playerObject.xPosition + 137.8;
@@ -85,7 +85,7 @@ function Projectile(playerObject, enemyObject){
 
 function Enemy(){
         
-        map.enemies.append(Enemy);
+        map.enemies.push(Enemy);
         
         this.xPositionMax = 1200;
         this.xPositionMin = 800;
