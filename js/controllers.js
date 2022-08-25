@@ -19,30 +19,49 @@ let player = {
             
                /*keyboard controller for player movement*/
                movement: function(playerObject) {
-                      document.addEventListener("keydown", function(event) {
-                              switch(event.key){
-                                      case 'w':
-                                      case 'ArrowUp':
-                                           if(playerObject.yPosition <= TOP_BORDER)
-                                                break;
-                                           playerObject.updateYPosition(-playerObject.speed);
-                                           break;
-                                           
-                                      case 's':
-                                      case 'ArrowDown':
-                                           
-                                           if(playerObject.yPosition >= BOTTOM_BORDER)
-                                                break;
-                                           playerObject.updateYPosition(playerObject.speed);
-                                           break;
-                                           
-                                }
-                        });
-                }
+                    document.addEventListener("keydown", function (event) {
+                         switch (event.key) {
+                              case 'w':
+                              case 'ArrowUp':
+                                   if (playerObject.yPosition <= TOP_BORDER)
+                                        break;
+                                   playerObject.updateYPosition(-playerObject.speed);
+                                   break;
+               
+                              case 's':
+                              case 'ArrowDown':
+                    
+                                   if (playerObject.yPosition >= BOTTOM_BORDER)
+                                        break;
+                                   playerObject.updateYPosition(playerObject.speed);
+                                   break;
+                         }
+                    });
+               },
+               attack: function(){
+                     $(document).mousedown(function(){
+                          let energyBall = new Projectile(spaceShip);
+                          projectile.mechanisms.projectileInterval(energyBall);
+                     })
+               }
+
        }
 }
       
-       
+let projectile = {
+     mechanisms:{
+          projectileInterval:function(projectile){
+               setInterval(function(){
+               let xPosition = projectile.updateXPosition(projectile.speed);
+               if(xPosition >= 700){
+                    $('#map-box').remove(projectile);
+                    clearInterval(projectile.mechanisms.projectileInterval);
+               }
+          }, 495.5 / projectile.speed);
+          }
+     }
+}
+
 
 
 
@@ -71,19 +90,7 @@ let player = {
                 //         let range = 0;
                 //
                 //
-                //         let fizzOutTimer = setInterval(() => {
-                //
-                //                 if(range++ < 10){
-                //                         console.log(range)
-                //                         console.log(projectileImg.style.left)
-                //                         document.getElementById('projectile-position').innerText = `projectile-position: ${playerPosX}`
-                //                         playerPosX += BULLET_SPEED * range;
-                //                         projectileImg.style.paddingLeft = `${playerPosX}px`;
-                //                 }else{
-                //                         mapbox.removeChild(projectileImg);
-                //                         clearInterval(fizzOutTimer);
-                //                 }
-                //         }, 18);
+                
                 //
                 //   }
                 // },

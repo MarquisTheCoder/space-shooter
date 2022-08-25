@@ -47,18 +47,31 @@ function Player(playerObject){
 function Projectile(playerObject){
        
         this.speed = 20.0;
-        this.xPosition = 5.0;
-        this.yPosition = 300.0;
+        this.xPosition = playerObject.xPosition + 137.8;
+        this.yPosition = playerObject.yPosition + 37.0;
         this.projectileOffset = 5;
         /*Creating projectile object and displaying it by
         * appending it to the player object at its position
         * with the offset x position by projectile offset.*/
         this.projectileObject = $("<img alt=''/>'");
         this.projectileObject.attr('src', '../images/projectiles/energy-ball.png');
+        this.projectileObject.attr('height', '40px');
         this.projectileObject.css('position', 'absolute');
-        this.projectileObject.css('top', `${playerObject.yPosition}px`);
-        this.projectileObject.css('left',`${playerObject.xPosition + this.projectileOffset}px`);
-        // $(playerObject).append(this.projectileObject);
+        this.projectileObject.css('top', `${this.yPosition}px`);
+        this.projectileObject.css('left',`${this.xPosition}px`);
+        $('#map-box').append(this.projectileObject);
+        
+        this.updateXPosition = function (xIncrement){
+                this.xPosition += xIncrement;
+                this.projectileObject.css('left', `${this.xPosition}px`);
+                return this.xPosition;
+        }
+        
+        this.updateYPosition = function (yIncrement){
+                this.yPosition += yIncrement;
+                this.projectileObject.css('top', `${this.yPosition}px`);
+                return this.yPosition;
+        }
 }
 
 

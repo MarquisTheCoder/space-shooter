@@ -37,14 +37,24 @@
         <script src="js/mapping.js"></script>
 
         <script>
-            let spaceShip  = new Player($('#player'));
-         player.controller.movement(spaceShip);
-          let bullet = new Projectile(spaceShip);
-         let gameLoop = setInterval(function(){
-              if(spaceShip.health <= 0){
-                      clearInterval(gameLoop);
-                }
-            },900);
+
+
+             /*attaching #player image to the
+             * new spaceship object*/
+             let spaceShip  = new Player($('#player'));
+
+             /*Adding keyboard controls to the spaceShip
+             * object*/
+             player.controller.movement(spaceShip);
+             player.controller.attack();
+             /*Init gaming loop*/
+             let gameLoop = setInterval(function(){
+                  if(spaceShip.health <= 0){
+                       clearInterval(gameLoop);
+                  }
+             },900);
+
+
      </script>
     </body>
 </html>
