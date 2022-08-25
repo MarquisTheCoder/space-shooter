@@ -16,7 +16,7 @@
 function Player(playerObject){
         this.speed = 12.2344;
         this.health = 100.0;
-        this.xPosition = 0.0;
+        this.xPosition = 5.0;
         this.yPosition = 300.0;
         this.playerObject = playerObject;
        
@@ -44,11 +44,22 @@ function Player(playerObject){
         
 }
 
+function Projectile(playerObject){
+       
+        this.speed = 20.0;
+        this.xPosition = 5.0;
+        this.yPosition = 300.0;
+        this.projectileOffset = 5;
+        /*Creating projectile object and displaying it by
+        * appending it to the player object at its position
+        * with the offset x position by projectile offset.*/
+        this.projectileObject = $("<img alt=''/>'");
+        this.projectileObject.attr('src', '../images/projectiles/energy-ball.png');
+        this.projectileObject.css('position', 'absolute');
+        this.projectileObject.css('top', `${playerObject.yPosition}px`);
+        this.projectileObject.css('left',`${playerObject.xPosition + this.projectileOffset}px`);
+        // $(playerObject).append(this.projectileObject);
+}
 
-// function Enemy(speed) {
-//         this.xPosition;
-//         this.yPosition;
-//         // this.setXPosition()
-//
-// }
+
 

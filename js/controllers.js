@@ -9,28 +9,33 @@
  File Description:
  */
 
-const UP = 'w' ;
-const DOWN = 's';
-const LEFT = 'a';
-const RIGHT = 'd';
+const TOP_BORDER = 80;
+const BOTTOM_BORDER = 700;
 
+/*object for all controllers relating to the player*/
 let player = {
+       
        controller: {
+            
+               /*keyboard controller for player movement*/
                movement: function(playerObject) {
                       document.addEventListener("keydown", function(event) {
                               switch(event.key){
                                       case 'w':
                                       case 'ArrowUp':
-                                                if(player.positionY <= 80)
-                                                        break;
-                                                playerObject.updateYPosition(-playerObject.speed);
+                                           if(playerObject.yPosition <= TOP_BORDER)
                                                 break;
+                                           playerObject.updateYPosition(-playerObject.speed);
+                                           break;
+                                           
                                       case 's':
                                       case 'ArrowDown':
-                                                if(player.positionY >= 750)
-                                                        break;
-                                                playerObject.updateYPosition(playerObject.speed);
+                                           
+                                           if(playerObject.yPosition >= BOTTOM_BORDER)
                                                 break;
+                                           playerObject.updateYPosition(playerObject.speed);
+                                           break;
+                                           
                                 }
                         });
                 }

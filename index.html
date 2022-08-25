@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Space Man</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <!--jquery importation link-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!--data bar for gameplay data-->
-    <div id="data-bar">
-        <ul>
-            <li id="shots-fired">shots-fired: 0 </li>
-            <li id="player-health">player-health: 0 </li>
-            <li id="points">points: 0 </li>
-        </ul>
-    </div>
 
-    <!--container for game map-->
-    <div id="map-box">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Simple asteroid like space game">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Space-Man 1</title>
+    </head>
+    <body>
 
-        <!--container for player img obj-->
-        <span id="player">
-            <img width="125" height="80" src="images/ufo2.png">
-        </span>
+        <!--jquery importation link-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    </div>
+        <!--data bar for gameplay data-->
+        <div id="data-bar">
+            <ul>
+                <li id="shots-fired">shots-fired: 0 </li>
+                <li id="player-health">player-health: 0 </li>
+                <li id="points">points: 0 </li>
+            </ul>
+        </div>
 
-    <!--Main game files-->
+        <!--container for game map-->
+        <div class='level' id="map-box">
+            <!--container for player img obj-->
+            <div id="player">
+                <img width="125" height="80" src="images/ufo2.png">
+            </div>
+        </div>
 
-    <!--object metadata-->
-    <script src="js/characters.js"></script>
-    <!--object controllers (mechanics)-->
-    <script src="js/controllers.js"></script>
-    <!-- mapping controller -->
-    <script src="js/mapping.js"></script>
+        <!--object metadata-->
+        <script src="js/characters.js"></script>
+        <!--object controllers (mechanics)-->
+        <script src="js/controllers.js"></script>
+        <!-- mapping controller -->
+        <script src="js/mapping.js"></script>
 
-    <script>
-
-        let spaceShip  = new Player($('#player'))
-        player.controller.movement(spaceShip);
-        let gameLoop = setInterval(function(){
-             if(spaceShip.health <= 0){
-                  clearInterval(gameLoop);
-             }
-        },900);
-
-
-    </script>
-</body>
+        <script>
+            let spaceShip  = new Player($('#player'));
+         player.controller.movement(spaceShip);
+          let bullet = new Projectile(spaceShip);
+         let gameLoop = setInterval(function(){
+              if(spaceShip.health <= 0){
+                      clearInterval(gameLoop);
+                }
+            },900);
+     </script>
+    </body>
 </html>
