@@ -14,69 +14,31 @@ const DOWN = 's';
 const LEFT = 'a';
 const RIGHT = 'd';
 
-const SPEED = 30.45;
-const BULLET_SPEED = 15;
-const JUMP_SPEED = 50;
-
-
-let playerController = {
-        setPosition: function(player, x, y) {
-                player.positionX += x;
-                player.positionY += y;
-                player.playerId.style.position = 'absolute';
-                player.playerId.style.left = player.positionX + 'px';
-                player.playerId.style.top = player.positionY + 'px';
-        },
-        playerMovement: function (player){
-
-                document.addEventListener("keydown", function(event) {
-                        switch(event.key){
-                                case UP:
-                                        case 'ArrowUp':
-                                                if(player.positionY <= 80){
+let player = {
+       controller: {
+               movement: function(playerObject) {
+                      document.addEventListener("keydown", function(event) {
+                              switch(event.key){
+                                      case 'w':
+                                      case 'ArrowUp':
+                                                if(player.positionY <= 80)
                                                         break;
-                                                }
-                                                player.setPosition(player, 0, -SPEED);
+                                                playerObject.updateYPosition(-playerObject.speed);
                                                 break;
-
-
-                                                case DOWN:
-                                        case 'ArrowDown':
-
-                                                if(player.positionY >= 750){
+                                      case 's':
+                                      case 'ArrowDown':
+                                                if(player.positionY >= 750)
                                                         break;
-                                                }
-                                                controller.player.setPosition(player, 0, SPEED);
+                                                playerObject.updateYPosition(playerObject.speed);
                                                 break;
                                 }
-                        })
+                        });
                 }
-
-
+       }
 }
-let enemyController = {
-        createEnemy: function(){
-                        let enemy = document.createElement('img');
-                        enemy.setAttribute('src', '../images/enemy.webp');
-                        enemy.setAttribute('height','90');
-                        enemy.setAttribute('width', '90');
-                        enemy.setAttribute('position', 'absolute');
-                        enemy.setAttribute('left', `${Math.random()*101+500}`);
-                        document.getElementById('map-box').appendChild(enemy);
-                        character.enemy.enemyId = enemy;
-                },
-                setEnemyPosition: function (enemy, x, y){
-                        enemy.positionX += x;
-                        enemy.positionY += y;
-                        enemy.enemyId.style.position = 'absolute';
-                        enemy.enemyId.style.left = x + 'px';
+      
+       
 
-                        enemy.enemyId.style.top = y + 'px';
-                }
-}
-let projectileController = {
-
-}
 
 
                 //
