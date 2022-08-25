@@ -85,7 +85,10 @@ function Projectile(playerObject, enemyObject){
 
 function Enemy(){
         
+        /*pushing object to the map object to
+        * be used for the object tracking system later*/
         map.enemies.push(Enemy);
+        
         
         this.xPositionMax = 1200;
         this.xPositionMin = 800;
@@ -93,15 +96,23 @@ function Enemy(){
         this.yPositionMax = 600;
         this.yPositionMin = 100;
         
+        /* x coordinate spawn boundaries*/
         this.xRangeOffset = this.xPositionMax - this.xPositionMin;
+        
+        /* y coordinate spawn boundaries*/
         this.yRangeOffset = this.yPositionMax - this.yPositionMin;
         
+        /* generating a random start position within xRangeOffset*/
         this.startXPosition = Math.floor(Math.random() * this.xRangeOffset + 1) + this.xPositionMin;
+        
+        /* generating a random start position within the yRangeOffset*/
         this.startYPosition = Math.floor(Math.random() * this.yRangeOffset + 1) + this.yPositionMin;
         
+        /*creating an enemy image object with jquery*/
         this.enemyObject = $("<img alt='enemy-object'/>");
         this.enemyObject.attr('src','../images/gnome.png');
         
+        /**/
         this.enemyObject.css('position', 'absolute');
         this.enemyObject.css('top',`${this.startYPosition}px`);
         this.enemyObject.css('left',`${this.startXPosition}px`);
