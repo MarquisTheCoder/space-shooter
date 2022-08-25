@@ -53,48 +53,12 @@ let player = {
 let projectile = {
      mechanisms:{
           projectileInterval:function(projectile){
-               setInterval(function(){
+               let projectileInterval = setInterval(function(){
                let xPosition = projectile.updateXPosition(projectile.speed);
-               if(xPosition >= 700){
-                    $('#map-box').remove(projectile);
-                    clearInterval(projectile.mechanisms.projectileInterval);
+               if(xPosition >= 1450){
+                    $(projectile.projectileObject).remove();
                }
-          }, 495.5 / projectile.speed);
+          }, 1000 / projectile.speed);
           }
      }
 }
-
-
-
-
-                //
-                //
-                //   projectile: function(player){
-                //           /*Creating image and taking it out of page flow with absolute*/
-                //         let projectileImg = document.createElement('img');
-                //
-                //         let playerPosX = player.positionX;
-                //         let playerPosY = player.positionY;
-                //
-                //         projectileImg.setAttribute('src', '../images/energy-ball.png');
-                //         projectileImg.setAttribute('class','bullet');
-                //         projectileImg.setAttribute('height', '40');
-                //         projectileImg.setAttribute('width', '45');
-                //         projectileImg.setAttribute('position', 'absolute');
-                //         projectileImg.setAttribute('left', `${playerPosX}px`);
-                //         projectileImg.setAttribute('top', `${playerPosY}px`);
-                //
-                //         /*Showing the projectile by making it a child of the map container*/
-                //         let mapbox = document.getElementById('player');
-                //         mapbox.appendChild(projectileImg);
-                //
-                //
-                //         let range = 0;
-                //
-                //
-                
-                //
-                //   }
-                // },
-                //
-

@@ -14,11 +14,15 @@
 
 
 function Player(playerObject){
+        
+        map.players.append(Player);
+        
         this.speed = 12.2344;
         this.health = 100.0;
         this.xPosition = 5.0;
         this.yPosition = 300.0;
         this.playerObject = playerObject;
+        
        
         
         this.playerObject.css('position', 'absolute');
@@ -44,8 +48,11 @@ function Player(playerObject){
         
 }
 
-function Projectile(playerObject){
+function Projectile(playerObject, enemyObject){
        
+        
+        map.projectiles.append(Projectile);
+        
         this.speed = 20.0;
         this.xPosition = playerObject.xPosition + 137.8;
         this.yPosition = playerObject.yPosition + 37.0;
@@ -53,13 +60,15 @@ function Projectile(playerObject){
         /*Creating projectile object and displaying it by
         * appending it to the player object at its position
         * with the offset x position by projectile offset.*/
-        this.projectileObject = $("<img alt=''/>'");
-        this.projectileObject.attr('src', '../images/projectiles/energy-ball.png');
+        this.projectileObject = $("<img alt='projectile-object'/>'");
+        this.projectileObject.attr('src', '../images/projectiles/energy-ball-red.png');
         this.projectileObject.attr('height', '40px');
         this.projectileObject.css('position', 'absolute');
         this.projectileObject.css('top', `${this.yPosition}px`);
         this.projectileObject.css('left',`${this.xPosition}px`);
         $('#map-box').append(this.projectileObject);
+        
+       
         
         this.updateXPosition = function (xIncrement){
                 this.xPosition += xIncrement;
@@ -74,6 +83,44 @@ function Projectile(playerObject){
         }
 }
 
+function Enemy(){
+        
+        map.enemies.append(Enemy);
+        
+        this.xPositionMax = 1200;
+        this.xPositionMin = 800;
+        
+        this.yPositionMax = 600;
+        this.yPositionMin = 100;
+        
+        this.xRangeOffset = this.xPositionMax - this.xPositionMin;
+        this.yRangeOffset = this.yPositionMax - this.yPositionMin;
+        
+        this.startXPosition = Math.floor(Math.random() * this.xRangeOffset) + this.xPositionMin;
+        this.startYPosition = Math.floor(Math.random() * this.yRangeOffset) + this.yPositionMin;
+        
+        this.enemyObject = $("<img alt='enemy-object'/>");
+        this.enemyObject.attr('src','../images/gnome.png');
+        
+        this.enemyObject.css('position', 'absolute');
+        this.enemyObject.css('top',`${this.startYPosition}px`);
+        this.enemyObject.css('left',`${this.startXPosition}px`);
+        this.enemyObject.css('height',`90px`);
+        
+        $('#map-box').append(this.enemyObject);
+        
+        this.updateXPosition = function (xIncrement){
+                this.xPosition += xIncrement;
+                this.enemyObject.css('left', `${this.xPosition}px`);
+                return this.xPosition;
+        }
+
+        this.updateYPosition = function (yIncrement){
+                this.yPosition += yIncrement;
+                this.enemyObject.css('top', `${this.yPosition}px`);
+                return this.yPosition;
+        }
+}
 
 
 
