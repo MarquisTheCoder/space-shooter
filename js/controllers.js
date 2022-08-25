@@ -17,6 +17,7 @@ const RIGHT = 'd';
 const SPEED = 30.45;
 const BULLET_SPEED = 15;
 const JUMP_SPEED = 50;
+
 let controller = {
 
         player : {
