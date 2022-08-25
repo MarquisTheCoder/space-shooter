@@ -40,6 +40,8 @@ let player = {
                },
                attack: function(){
                      $(document).mousedown(function(){
+                          let energyBallSound = new Audio('../sounds/laser-gun.mp3');
+                          energyBallSound.play();
                           let energyBall = new Projectile(spaceShip);
                           projectile.mechanisms.projectileInterval(energyBall);
                      })
