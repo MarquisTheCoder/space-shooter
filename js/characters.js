@@ -14,17 +14,22 @@
 
 
 function Player(playerObject){
-        
+       
+        /*adds Player object to the map players object
+        * array for global object tracking later*/
         map.players.push(Player);
         
         this.speed = 12.2344;
         this.health = 100.0;
+        
         this.xPosition = 5.0;
         this.yPosition = 300.0;
+       
+        /*takes given element playerObject and turns it into
+        * a Player object*/
         this.playerObject = playerObject;
         
-       
-        
+        /*sets css positioning for the player object*/
         this.playerObject.css('position', 'absolute');
         this.playerObject.css('top', `${this.yPosition}px`);
         this.playerObject.css('left', `${this.xPosition}px`);
@@ -48,15 +53,25 @@ function Player(playerObject){
         
 }
 
+/*projectile object constructor*/
 function Projectile(playerObject, enemyObject){
        
-        
+        /*pushes projectile object to the map
+        * object array for global object tracking later*/
         map.projectiles.push(Projectile);
         
+        /*projectile speed variable*/
         this.speed = 20.0;
-        this.xPosition = playerObject.xPosition + 137.8;
-        this.yPosition = playerObject.yPosition + 37.0;
-        this.projectileOffset = 5;
+        
+        /*projectile Y and X offset
+        * to put projectile in the middle
+        * and to the right of the player
+        * object*/
+        this.projectileYOffset = 37.0;
+        this.projectileXOffset = 137.8;
+        this.xPosition = playerObject.xPosition + this.projectileXOffset;
+        this.yPosition = playerObject.yPosition + this.projectileYOffset;
+        
         /*Creating projectile object and displaying it by
         * appending it to the player object at its position
         * with the offset x position by projectile offset.*/
@@ -68,7 +83,6 @@ function Projectile(playerObject, enemyObject){
         this.projectileObject.css('left',`${this.xPosition}px`);
         $('#map-box').append(this.projectileObject);
         
-       
         
         this.updateXPosition = function (xIncrement){
                 this.xPosition += xIncrement;
@@ -83,6 +97,7 @@ function Projectile(playerObject, enemyObject){
         }
 }
 
+/*Enemy constructor*/
 function Enemy(){
         
         /*pushing object to the map object to
@@ -108,24 +123,27 @@ function Enemy(){
         /* generating a random start position within the yRangeOffset*/
         this.startYPosition = Math.floor(Math.random() * this.yRangeOffset + 1) + this.yPositionMin;
         
-        /*creating an enemy image object with jquery*/
+        /* creating an enemy image object with jquery*/
         this.enemyObject = $("<img alt='enemy-object'/>");
         this.enemyObject.attr('src','../images/gnome.png');
         
-        /**/
+        /* sets the css positioning */
         this.enemyObject.css('position', 'absolute');
         this.enemyObject.css('top',`${this.startYPosition}px`);
         this.enemyObject.css('left',`${this.startXPosition}px`);
         this.enemyObject.css('height',`90px`);
-        
+       
+        /* adds the enemy object to the screen*/
         $('#map-box').append(this.enemyObject);
-        
+       
+        /* updates the enemy x position*/
         this.updateXPosition = function (xIncrement){
                 this.xPosition += xIncrement;
                 this.enemyObject.css('left', `${this.xPosition}px`);
                 return this.xPosition;
         }
-
+        
+        /* updates the enemy y position*/
         this.updateYPosition = function (yIncrement){
                 this.yPosition += yIncrement;
                 this.enemyObject.css('top', `${this.yPosition}px`);
