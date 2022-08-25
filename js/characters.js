@@ -96,8 +96,8 @@ function Enemy(){
         this.xRangeOffset = this.xPositionMax - this.xPositionMin;
         this.yRangeOffset = this.yPositionMax - this.yPositionMin;
         
-        this.startXPosition = Math.floor(Math.random() * this.xRangeOffset) + this.xPositionMin;
-        this.startYPosition = Math.floor(Math.random() * this.yRangeOffset) + this.yPositionMin;
+        this.startXPosition = Math.floor(Math.random() * this.xRangeOffset + 1) + this.xPositionMin;
+        this.startYPosition = Math.floor(Math.random() * this.yRangeOffset + 1) + this.yPositionMin;
         
         this.enemyObject = $("<img alt='enemy-object'/>");
         this.enemyObject.attr('src','../images/gnome.png');
