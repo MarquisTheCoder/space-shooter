@@ -58,7 +58,7 @@ let projectile = {
                if(xPosition >= 1450){
                     $(projectile.projectileObject).remove();
                }
-          }, 1000 / projectile.speed);
+          }, 650 / projectile.speed);
           }
      }
 }
