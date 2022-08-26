@@ -1,88 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Space Man</title>
-</head>
 
-<body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<style>
-    html{
-        margin: 0;
-        padding: 0;
-        background: url('images/earthview/background.jpg') no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Just trying to figure it all out maaaaaaan...">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Far out maaaaaaaan......</title>
+    </head>
+    <body>
 
-        overflow: hidden;
-        user-select: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
+        <!--jquery importation link-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+        <!--data bar for gameplay data-->
+<!--        <div id="data-bar">-->
+<!--            <ul>-->
+<!--                <li id="shots-fired">shots-fired: 0 </li>-->
+<!--                <li id="player-health">player-health: 0 </li>-->
+<!--                <li id="points">points: 0 </li>-->
+<!--            </ul>-->
+<!--        </div>-->
 
-    }
-
-
-</style>
-    <script src="js/characters.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/mapping.js"></script>
-
-
-    <div id="map-box">
-        <div id="shots-fired" style="color: whitesmoke;">shots-fired: 0</div>
-        <div id="projectile-position" style="color: white">projectile-position: </div>
-        <div id="player">
-            <img width="125" height="80" src="images/ufo2.png">
+        <!--container for game map-->
+        <div class='level' id="map-box">
+            <!--container for player img obj-->
+            <div id="player">
+                <img width="125" height="80" src="images/ufo2.png">
+            </div>
         </div>
 
-    </div>
+        <!--object metadata-->
+        <script src="js/characters.js"></script>
+        <!--object controllers (mechanics)-->
+        <script src="js/controllers.js"></script>
+        <!-- mapping controller -->
+        <script src="js/mapping%20/mapping.js"></script>
+
+        <script>
 
 
-    <script>
+             /*attaching #player image to the
+             * new spaceship object*/
+             let spaceShip  = new Player($('#player'));
 
-            window.onload = (event) => {
+             /*Adding keyboard controls to the spaceShip
+             * object*/
+             player.controller.movement(spaceShip);
+             player.controller.attack();
 
-                    let player = character.player;
-                    player.playerId = document.getElementById('player');
-
-                    controller.player.playerMovement(player);
-                    controller.player.setPosition(player, 40, 325);
-
-                    let lastClick = 0;
-                    let shotsFired = 0;
-
-                    document.addEventListener('mousedown', function (event){
-                            let audio = new Audio('sounds/laser-gun.mp3');
-
-                            audio.play();
-                            shotsFired += 1;
-                            document.getElementById('shots-fired').innerHTML = `shots-fired: <span style="color: red">${shotsFired}</span>`;
-                            controller.player.attack.projectile(player);
-                    });
-
-                    controller.enemy.createEnemy();
-                    const random = () => Math.random()*600 + 400;
-
-                    // controller.enemy.setEnemyPosition(character.enemy, random(), random());
-
-                    let range = 800;
-
-                    let intervalId = setInterval(()=>{
-                            if(range-- > 150){
-                                    controller.enemy.setEnemyPosition(character.enemy,range,400)
-                            }
-                    }, 1000)
+             let enemy = new Enemy();
+             /*Init gaming loop*/
+             let gameLoop = setInterval(function(){
+                  if(spaceShip.health <= 0){
+                       clearInterval(gameLoop);
+                  }
+             },900);
 
 
-            }
-
-    </script>
-
-</body>
+     </script>
+    </body>
 </html>
