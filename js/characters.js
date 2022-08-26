@@ -17,7 +17,6 @@ function Player(playerObject){
        
         /*adds Player object to the map players object
         * array for global object tracking later*/
-        map.players.push(Player);
         
         this.speed = 12.2344;
         this.health = 100.0;
@@ -58,8 +57,7 @@ function Projectile(playerObject, enemyObject){
        
         /*pushes projectile object to the map
         * object array for global object tracking later*/
-        map.projectiles.push(Projectile);
-        
+        this.type = 'projectile';
         /*projectile speed variable*/
         this.speed = 20.0;
         
@@ -102,9 +100,8 @@ function Enemy(){
         
         /*pushing object to the map object to
         * be used for the object tracking system later*/
-        map.enemies.push(Enemy);
-        
-        
+        objects.addObject(Enemy);
+        this.type = 'enemy';
         this.xPositionMax = 1200;
         this.xPositionMin = 800;
         
@@ -135,7 +132,7 @@ function Enemy(){
        
         /* adds the enemy object to the screen*/
         $('#map-box').append(this.enemyObject);
-       
+        
         /* updates the enemy x position*/
         this.updateXPosition = function (xIncrement){
                 this.xPosition += xIncrement;

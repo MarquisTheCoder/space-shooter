@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
     <head>
         <meta charset="UTF-8">
@@ -35,21 +35,28 @@
         <!--object controllers (mechanics)-->
         <script src="js/controllers.js"></script>
         <!-- mapping controller -->
-        <script src="js/mapping%20/mapping.js"></script>
+        <script src="js/mapping/object-tracker.js"></script>
+
 
         <script>
 
 
              /*attaching #player image to the
              * new spaceship object*/
+
+
              let spaceShip  = new Player($('#player'));
 
+             let objects = new ObjectTracker();
+             let enemy = new Enemy();
+             let enemy2 = new Enemy();
              /*Adding keyboard controls to the spaceShip
              * object*/
              player.controller.movement(spaceShip);
              player.controller.attack();
 
-             let enemy = new Enemy();
+
+             console.log(objects.enemyObjects.length);
              /*Init gaming loop*/
              let gameLoop = setInterval(function(){
                   if(spaceShip.health <= 0){
