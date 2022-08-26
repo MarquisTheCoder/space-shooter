@@ -39,8 +39,9 @@ let player = {
                },
                attack: function(){
                      $(document).mousedown(function(){
+                          console.log(Map.projectileObjects.length)
                           let energyBallSound = new Audio('../sounds/laser-gun.mp3');
-                          energyBallSound.play();
+                          let promiseResult = energyBallSound.play();
                           let energyBall = new Projectile(spaceShip);
                           projectile.mechanisms.projectileInterval(energyBall);
                      })
@@ -55,7 +56,10 @@ let projectile = {
                let projectileInterval = setInterval(function(){
                let xPosition = projectile.updateXPosition(projectile.speed);
                if(xPosition >= 1450){
+                    Map.projectileObjects.splice(projectile, 1)
                     $(projectile.projectileObject).remove();
+                    clearInterval(projectileInterval);
+                    
                }
           }, 650 / projectile.speed);
           }

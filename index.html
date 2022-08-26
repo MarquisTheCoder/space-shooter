@@ -29,14 +29,14 @@
                 <img width="125" height="80" src="images/ufo2.png">
             </div>
         </div>
-
+        <!-- mapping metadata -->
+        <script src="js/mapping/mapping.js"></script>
         <!--object metadata-->
         <script src="js/characters.js"></script>
         <!--object controllers (mechanics)-->
         <script src="js/controllers.js"></script>
         <!-- mapping controller -->
         <script src="js/mapping/object-tracker.js"></script>
-
 
         <script>
 
@@ -47,7 +47,6 @@
 
              let spaceShip  = new Player($('#player'));
 
-             let objects = new ObjectTracker();
              let enemy = new Enemy();
              let enemy2 = new Enemy();
              /*Adding keyboard controls to the spaceShip
@@ -55,8 +54,6 @@
              player.controller.movement(spaceShip);
              player.controller.attack();
 
-
-             console.log(objects.enemyObjects.length);
              /*Init gaming loop*/
              let gameLoop = setInterval(function(){
                   if(spaceShip.health <= 0){

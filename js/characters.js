@@ -57,7 +57,7 @@ function Projectile(playerObject, enemyObject){
        
         /*pushes projectile object to the map
         * object array for global object tracking later*/
-        this.type = 'projectile';
+        Map.projectileObjects.push(this)
         /*projectile speed variable*/
         this.speed = 20.0;
         
@@ -100,7 +100,7 @@ function Enemy(){
         
         /*pushing object to the map object to
         * be used for the object tracking system later*/
-        objects.addObject(Enemy);
+        Map.enemyObjects.push(this);
         this.type = 'enemy';
         this.xPositionMax = 1200;
         this.xPositionMin = 800;
