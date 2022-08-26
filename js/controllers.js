@@ -9,7 +9,6 @@
  File Description:
  */
 
-<<<<<<< HEAD
 const UP = 'w' ;
 const DOWN = 's';
 const LEFT = 'a';
@@ -129,7 +128,6 @@ let controller = {
                 }
         }
 }
-=======
 const TOP_BORDER = 80;
 const BOTTOM_BORDER = 700;
 
@@ -183,4 +181,3 @@ let projectile = {
           }
      }
 }
->>>>>>> refactoring-core-mechanics
