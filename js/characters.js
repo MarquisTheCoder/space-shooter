@@ -14,10 +14,6 @@
 
 
 function Player(playerObject){
-       
-        /*adds Player object to the map players object
-        * array for global object tracking later*/
-        
         this.speed = 12.2344;
         this.health = 100.0;
         
