@@ -16,6 +16,8 @@ let objectTracker = {
                          Map.projectileObjects.forEach(projectile => {
                               if(Math.abs(enemy.xPosition - projectile.xPosition) <= 50 &&
                                    Math.abs(enemy.yPosition - projectile.yPosition) <= 55){
+                                        let explode = new Audio('../../sounds/object-explode.wav');
+                                        explode.play();
                                         Map.methods.destroy(enemy.enemyObject);
                                         Map.enemyObjects.splice(Map.enemyObjects.indexOf(enemy), 1);
                                         delete enemy.constructor;
@@ -25,8 +27,19 @@ let objectTracker = {
      },seconds(.1))
           },
      playerCollisionTracker:  function (){
-               setInterval(function (){
-               
-               }, seconds(.1))
-     }
+               setInterval(function () {
+                    Map.enemyObjects.forEach(enemy => {
+                         if (Math.abs(enemy.xPosition - spaceShip.xPosition) <= 50 &&
+                              Math.abs(enemy.yPosition - spaceShip.yPosition) <= 55) {
+                              let explode = new Audio('../../sounds/object-explode.wav');
+                              let x = explode.play();
+                              Map.methods.destroy(spaceShip.playerObject);
+                              delete spaceShip.constructor;
+                              $(document).innerHTML('<h1>GAME OVER</h1>');
+                         }
+                    })
+               })
+          },
 }
+
+               
