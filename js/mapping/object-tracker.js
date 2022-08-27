@@ -35,7 +35,7 @@ let objectTracker = {
                               let x = explode.play();
                               Map.methods.destroy(spaceShip.playerObject);
                               delete spaceShip.constructor;
-                              $(document).innerHTML('<h1>GAME OVER</h1>');
+                              Map.methods.display.gameOver();
                          }
                     })
                })

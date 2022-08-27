@@ -11,7 +11,19 @@
 
 const Map = {
      methods:{
-          destroy: (object) => $(object).remove()
+          destroy: (object) => $(object).remove(),
+          display:{
+               gameOver: function (){
+                    let img = $("<img/>");
+                    img.attr('src','../../images/game-over.png');
+                    img.attr('height', '400px');
+                    img.attr('position', 'absolute');
+                    img.attr('top', '500px');
+                    img.attr('left', '500px');
+     
+                    $('#map-box').append(img);
+               }
+          }
      },
      projectileObjects: [],
      enemyObjects: []
