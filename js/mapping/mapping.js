@@ -10,6 +10,9 @@
  */
 
 const Map = {
+     methods:{
+          destroy: (object) => $(object).remove()
+     },
      projectileObjects: [],
      enemyObjects: []
 }

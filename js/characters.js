@@ -140,11 +140,11 @@ function Enemy(){
                 return this.xPosition;
         }
         /* updates the enemy y position*/
-        this.updateYPosition = function (){
-                this.yPosition -= this.speed;
-                this.enemyObject.css('top', `${this.yPosition}px`);
-                return this.yPosition;
-        }
+        // this.updateYPosition = function (){
+        //         this.yPosition -= ;
+        //         this.enemyObject.css('top', `${this.yPosition}px`);
+        //         return this.yPosition;
+        // }
 }
 
 
