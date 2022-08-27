@@ -16,7 +16,8 @@ function objectTracker(){
      let trackingInterval = setInterval(function() {
           Map.enemyObjects.forEach(enemy => {
                Map.projectileObjects.forEach(projectile => {
-                    if(enemy.xPosition - projectile.xPosition <= 50){
+                    if(Math.abs(enemy.xPosition - projectile.xPosition) <= 50 &&
+                         Math.abs(enemy.yPosition - projectile.yPosition) <= 50){
                          Map.enemyObjects.splice(enemy, 1)
                          $(enemy.enemyObject).remove();
                     }

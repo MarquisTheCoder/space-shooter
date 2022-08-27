@@ -10,7 +10,6 @@
  */
 
 const Map = {
-     
      projectileObjects: [],
      enemyObjects: []
 }
