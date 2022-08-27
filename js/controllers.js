@@ -54,12 +54,11 @@ let projectile = {
      mechanisms:{
           projectileInterval:function(projectile){
                let projectileInterval = setInterval(function(){
-               let xPosition = projectile.updateXPosition(projectile.speed);
+               let xPosition = projectile.updateXPosition();
                if(xPosition >= 1450){
                     Map.projectileObjects.splice(projectile, 1)
                     $(projectile.projectileObject).remove();
                     clearInterval(projectileInterval);
-                    
                }
           }, 650 / projectile.speed);
           }

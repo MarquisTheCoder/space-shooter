@@ -44,7 +44,7 @@
              /*attaching #player image to the
              * new spaceship object*/
 
-
+             const seconds = (sec) => sec*1000;
              let spaceShip  = new Player($('#player'));
 
              let enemy = new Enemy();
@@ -54,6 +54,7 @@
              player.controller.movement(spaceShip);
              player.controller.attack();
 
+             objectTracker();
              /*Init gaming loop*/
              let gameLoop = setInterval(function(){
                   if(spaceShip.health <= 0){

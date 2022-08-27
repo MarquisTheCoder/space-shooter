@@ -8,15 +8,19 @@
  File Name: object-tracker.js,
  File Description:
  */
-
-function ObjectTracker(){
-    
-     this.addObject = function (object){
-          if(object.type === 'projectile'){
-               Map.projectileObjects.push(object);
-          }else if(object.type === 'enemy'){
-               Map.enemyObjects.push(object);
-          }
-     }
+function destroy(object){
+     $(object).remove();
      
+}
+function objectTracker(){
+     let trackingInterval = setInterval(function() {
+          Map.enemyObjects.forEach(enemy => {
+               Map.projectileObjects.forEach(projectile => {
+                    if(enemy.xPosition - projectile.xPosition <= 50){
+                         Map.enemyObjects.splice(enemy, 1)
+                         $(enemy.enemyObject).remove();
+                    }
+               })
+          })
+     },seconds(.1));
 }
