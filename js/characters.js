@@ -101,12 +101,12 @@ function Enemy(){
         /*pushing object to the map object to
         * be used for the object tracking system later*/
         Map.enemyObjects.push(this);
-        this.speed = 20;
-        this.xPositionMax = 800;
-        this.xPositionMin = 700;
+        this.speed = Math.random() * 9+ 1;
+        this.xPositionMax = 1400;
+        this.xPositionMin = 1200;
         
-        this.yPositionMax = 400;
-        this.yPositionMin = 700;
+        this.yPositionMax = TOP_BORDER;
+        this.yPositionMin = BOTTOM_BORDER;
         
         /* x coordinate spawn boundaries*/
         this.xRangeOffset = this.xPositionMax - this.xPositionMin;
@@ -122,7 +122,7 @@ function Enemy(){
         
         /* creating an enemy image object with jquery*/
         this.enemyObject = $("<img alt='enemy-object'/>");
-        this.enemyObject.attr('src','../images/gnome.png');
+        this.enemyObject.attr('src','../images/enemy.webp');
         
         /* sets the css positioning */
         this.enemyObject.css('position', 'absolute');
@@ -139,9 +139,8 @@ function Enemy(){
                 this.enemyObject.css('left', `${this.xPosition}px`);
                 return this.xPosition;
         }
-        
         /* updates the enemy y position*/
-        this.updateYPosition = function (yIncrement){
+        this.updateYPosition = function (){
                 this.yPosition -= this.speed;
                 this.enemyObject.css('top', `${this.yPosition}px`);
                 return this.yPosition;

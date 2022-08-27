@@ -40,24 +40,30 @@
 
         <script>
 
+            const seconds = (sec) => sec*1000;
 
              /*attaching #player image to the
              * new spaceship object*/
-
-             const seconds = (sec) => sec*1000;
              let spaceShip  = new Player($('#player'));
-
-             let enemy = new Enemy();
-             let enemy2 = new Enemy();
              /*Adding keyboard controls to the spaceShip
              * object*/
+
+             objectTracker.enemyCollisionTracker();
+
              player.controller.movement(spaceShip);
              player.controller.attack();
-
-             objectTracker();
+            enemies.moveForward();
              /*Init gaming loop*/
+
+            setInterval(function(){
+                 setTimeout(function (){
+                      let x = new Enemy();
+                 }, Math.random()* 400 + 300)
+
+            }, seconds(.7))
              let gameLoop = setInterval(function(){
                   if(spaceShip.health <= 0){
+
                        clearInterval(gameLoop);
                   }
              },900);

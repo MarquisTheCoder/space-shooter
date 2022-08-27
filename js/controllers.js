@@ -49,7 +49,7 @@ let player = {
 
        }
 }
-      
+
 let projectile = {
      mechanisms:{
           projectileInterval:function(projectile){
@@ -62,5 +62,15 @@ let projectile = {
                }
           }, 650 / projectile.speed);
           }
+     }
+}
+
+let enemies = {
+     moveForward: function (){
+          let movementIntervals = setInterval(function(){
+               Map.enemyObjects.forEach(enemy => {
+                    enemy.updateXPosition();
+               })
+          }, 20);
      }
 }

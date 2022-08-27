@@ -10,18 +10,18 @@
  */
 function destroy(object){
      $(object).remove();
-     
 }
-function objectTracker(){
-     let trackingInterval = setInterval(function() {
+let objectTracker = {
+          enemyCollisionTracker: function() {setInterval(function() {
           Map.enemyObjects.forEach(enemy => {
                Map.projectileObjects.forEach(projectile => {
                     if(Math.abs(enemy.xPosition - projectile.xPosition) <= 50 &&
-                         Math.abs(enemy.yPosition - projectile.yPosition) <= 50){
-                         Map.enemyObjects.splice(enemy, 1)
-                         $(enemy.enemyObject).remove();
+                         Math.abs(enemy.yPosition - projectile.yPosition) <= 55){
+                         destroy(enemy.enemyObject);
+                         Map.enemyObjects.splice(Map.enemyObjects.indexOf(enemy), 1);
+                         delete enemy.constructor;
                     }
                })
           })
-     },seconds(.1));
+     },seconds(.1))}
 }
