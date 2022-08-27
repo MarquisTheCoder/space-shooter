@@ -52,7 +52,7 @@
 
              player.controller.movement(spaceShip);
              player.controller.attack();
-            enemies.moveForward();
+             enemies.moveForward();
              /*Init gaming loop*/
 
             setInterval(function(){
@@ -61,6 +61,7 @@
                  }, Math.random()* 400 + 300)
 
             }, seconds(.7))
+
              let gameLoop = setInterval(function(){
                   if(spaceShip.health <= 0){
 
