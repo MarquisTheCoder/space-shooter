@@ -10,6 +10,7 @@
  */
 
 let objectTracker = {
+     
           enemyCollisionTracker: function() {
                setInterval(function() {
                     Map.enemyObjects.forEach(enemy => {
@@ -17,7 +18,7 @@ let objectTracker = {
                               if(Math.abs(enemy.xPosition - projectile.xPosition) <= 50 &&
                                    Math.abs(enemy.yPosition - projectile.yPosition) <= 55){
                                         let explode = new Audio('../../sounds/object-explode.wav');
-                                        explode.play();
+                                        let x = explode.play();
                                         Map.methods.destroy(enemy.enemyObject);
                                         Map.enemyObjects.splice(Map.enemyObjects.indexOf(enemy), 1);
                                         delete enemy.constructor;
