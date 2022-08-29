@@ -65,7 +65,9 @@
              /*Track all player and non player objects on the map*/
              objectTracker.enemyCollisionTracker();
              objectTracker.playerCollisionTracker();
-
+             setInterval(function(){
+                  let demonCries = new Audio('./sounds/demons.mp3').play();
+             }, 2000)
              let gameLoop = setInterval(function(){
 
                   $('#level').html(`level: ${level}`);
