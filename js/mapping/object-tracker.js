@@ -35,7 +35,7 @@ let objectTracker = {
                     Map.enemyObjects.forEach(enemy => {
                          if (Math.abs(enemy.xPosition - spaceShip.xPosition) <= 50 &&
                               Math.abs(enemy.yPosition - spaceShip.yPosition) <= 55) {
-                              spaceShip.health -= 1;
+                              spaceShip.health -= 25;
                          }
                     })
                }, 150)

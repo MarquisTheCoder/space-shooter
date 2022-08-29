@@ -10,7 +10,8 @@
  */
 const TOP_BORDER = 80;
 const BOTTOM_BORDER = 700;
-
+const LEFT_BORDER = 10;
+const RIGHT_BORDER = 450;
 /*object for all controllers relating to the player*/
 let player = {
        
@@ -33,6 +34,18 @@ let player = {
                                    if (playerObject.yPosition >= BOTTOM_BORDER)
                                         break;
                                    playerObject.updateYPosition(playerObject.speed);
+                                   break;
+                              case 'a':
+                              case 'ArrowLeft':
+                                   if(playerObject.xPosition <= LEFT_BORDER)
+                                        break;
+                                   playerObject.updateXPosition(-playerObject.speed);
+                                   break;
+                              case 'd':
+                              case 'ArrowRight':
+                                   if(playerObject.xPosition >= RIGHT_BORDER)
+                                        break;
+                                   playerObject.updateXPosition(playerObject.speed);
                                    break;
                          }
                     });

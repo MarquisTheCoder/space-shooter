@@ -28,10 +28,13 @@ const Map = {
                     img.attr('src', '../../images/explosion.png');
                     img.attr('height', '70px');
                     img.css('position', 'absolute');
-                    img.css('top', `${yPosition}`);
-                    img.css('left', `${xPosition}`);
-                    
+                    img.css('top', `${yPosition}px`);
+                    img.css('left', `${xPosition}px`);
+                    let explosion = new Audio('../../sounds/object-explode.wav').play();
                     $('#map-box').append(img);
+                    setTimeout(function (){
+                         $(img).remove();
+                    }, seconds(.4))
                }
           }
      },
