@@ -14,7 +14,7 @@ const Map = {
           destroy: (object) => $(object).remove(),
           display:{
                gameOver: function (){
-                    let img = $("<img/>");
+                    let img = $("<img alt='gameover'/>");
                     img.attr('src','../../images/game-over.png');
                     img.css('height', '600px');
                     img.css('position', 'absolute');
@@ -24,9 +24,9 @@ const Map = {
                     $('#map-box').append(img);
                },
                explosion: function(xPosition, yPosition){
-                    let img =  $('<img alt=""/>');
+                    let img =  $('<img alt="explosion-enemy"/>');
                     img.attr('src', '../../images/explosion.png');
-                    img.attr('height', '70px');
+                    img.css('height', '70px');
                     img.css('position', 'absolute');
                     img.css('top', `${yPosition}px`);
                     img.css('left', `${xPosition}px`);
@@ -34,7 +34,20 @@ const Map = {
                     $('#map-box').append(img);
                     setTimeout(function (){
                          $(img).remove();
-                    }, seconds(.4))
+                    }, seconds(.4));
+               },
+               hitMarker: function(xPosition, yPosition){
+                    let img = $('<img alt="hit-marker"/>');
+                    img.attr('src', '../../images/hit-marker.png');
+                    img.css('height', '100px');
+                    img.css('position', 'absolute');
+                    img.css('top', `${yPosition}px`);
+                    img.css('left',`${xPosition}px`);
+                    let explosion = new Audio('../../sounds/object-explode.wav').play();
+                    $('#map-box').append(img);
+                    setTimeout(function(){
+                         $(img).remove();
+                    },.4);
                }
           }
      },
