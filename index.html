@@ -13,14 +13,13 @@
         <!--jquery importation link-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-        <!--data bar for gameplay data-->
-<!--        <div id="data-bar">-->
-<!--            <ul>-->
-<!--                <li id="shots-fired">shots-fired: 0 </li>-->
-<!--                <li id="player-health">player-health: 0 </li>-->
-<!--                <li id="points">points: 0 </li>-->
-<!--            </ul>-->
-<!--        </div>-->
+        <div id="data-bar">
+            <ul>
+                <li id="level">level: 0 </li>
+                <li id="player-health">player-health: health </li>
+                <li id="points">points: 0 </li>
+            </ul>
+        </div>
 
         <!--container for game map-->
         <div class='level' id="map-box">
@@ -39,7 +38,8 @@
         <script src="js/mapping/object-tracker.js"></script>
 
         <script>
-
+            let level = 1;
+            let points = 0;
             const seconds = (sec) => sec*1000;
 
              /*attaching #player image to the
@@ -60,14 +60,23 @@
                       let x = new Enemy();
                  }, Math.random()* 50 + 25)
 
-            }, seconds(.3))
+            }, seconds(.3) / level)
 
              let gameLoop = setInterval(function(){
+                  $('#level').html(`level: ${level}`);
+                  $('#points').html(`points: ${points}`);
+                  $('#player-health').html(`health: ${spaceShip.health}`);
+                  level = Math.ceil(points / 3);
                   if(spaceShip.health <= 0){
+                       let explode = new Audio('../../sounds/object-explode.wav');
+                       let x = explode.play();
+                       Map.methods.destroy(spaceShip.playerObject);
+                       delete spaceShip.constructor;
+                       Map.methods.display.gameOver();
 
                        clearInterval(gameLoop);
                   }
-             },900);
+             },1);
 
 
      </script>

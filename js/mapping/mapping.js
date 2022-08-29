@@ -16,10 +16,10 @@ const Map = {
                gameOver: function (){
                     let img = $("<img/>");
                     img.attr('src','../../images/game-over.png');
-                    img.attr('height', '400px');
-                    img.attr('position', 'absolute');
-                    img.attr('top', '500px');
-                    img.attr('left', '500px');
+                    img.css('height', '600px');
+                    img.css('position', 'absolute');
+                    img.css('top', '15vh');
+                    img.css('left', '22vw');
      
                     $('#map-box').append(img);
                }

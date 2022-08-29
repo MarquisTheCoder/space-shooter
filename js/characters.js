@@ -14,8 +14,8 @@
 
 
 function Player(playerObject){
-        this.speed = 12.2344;
-        this.health = 100.0;
+        this.speed = 17.2344;
+        this.health = 100;
         
         this.xPosition = 44.0;
         this.yPosition = 300.0;
@@ -97,12 +97,12 @@ function Enemy(){
         /*pushing object to the map object to
         * be used for the object tracking system later*/
         Map.enemyObjects.push(this);
-        this.speed = Math.random() * 9+ 1;
-        this.xPositionMax = 1400;
-        this.xPositionMin = 1200;
+        this.speed = Math.random() * (10 + points) + 7;
+        this.xPositionMax = 1800;
+        this.xPositionMin = 1500;
         
-        this.yPositionMax = TOP_BORDER;
-        this.yPositionMin = BOTTOM_BORDER;
+        this.yPositionMax = spaceShip.yPosition + Math.random() * 200 + 20;
+        this.yPositionMin = spaceShip.yPosition - Math.random() * 200 + 20;
         
         /* x coordinate spawn boundaries*/
         this.xRangeOffset = this.xPositionMax - this.xPositionMin;

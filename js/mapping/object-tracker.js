@@ -17,6 +17,7 @@ let objectTracker = {
                          Map.projectileObjects.forEach(projectile => {
                               if(Math.abs(enemy.xPosition - projectile.xPosition) <= 50 &&
                                    Math.abs(enemy.yPosition - projectile.yPosition) <= 55){
+                                        points += 1;
                                         let explode = new Audio('../../sounds/object-explode.wav');
                                         let x = explode.play();
                                         Map.methods.destroy(enemy.enemyObject);
@@ -32,14 +33,10 @@ let objectTracker = {
                     Map.enemyObjects.forEach(enemy => {
                          if (Math.abs(enemy.xPosition - spaceShip.xPosition) <= 50 &&
                               Math.abs(enemy.yPosition - spaceShip.yPosition) <= 55) {
-                              let explode = new Audio('../../sounds/object-explode.wav');
-                              let x = explode.play();
-                              Map.methods.destroy(spaceShip.playerObject);
-                              delete spaceShip.constructor;
-                              Map.methods.display.gameOver();
+                              spaceShip.health -= 100;
                          }
                     })
-               })
+               }, 150)
           },
 }
 
