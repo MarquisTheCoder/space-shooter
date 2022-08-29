@@ -67,7 +67,7 @@
              objectTracker.playerCollisionTracker();
              setInterval(function(){
                   let demonCries = new Audio('./sounds/demons.mp3').play();
-             }, 2000)
+             }, seconds(20));
              let gameLoop = setInterval(function(){
 
                   $('#level').html(`level: ${level}`);
