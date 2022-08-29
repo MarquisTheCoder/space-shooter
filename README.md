@@ -13,7 +13,7 @@ understanding of the View-Model-Controller model.
 - incremental difficulty
 - player sounds and explosions
 - hitmarkers
-- screams of the enemy horder
+- screams of the enemy horde!
 
 ### Showcase: 
 ##
