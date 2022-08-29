@@ -60,7 +60,7 @@ const Map = {
                     let minus = $('<p>-25</p>');
                     minus.css('position', 'absolute');
                     minus.css('top', `${yPosition}`);
-                    minus.css()
+                    minus.css('left', `${xPosition}`);
                     setTimeout(function(){
                          $(img).remove();
                     },seconds(.4));

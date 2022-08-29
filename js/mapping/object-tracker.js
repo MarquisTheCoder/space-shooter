@@ -16,7 +16,7 @@ let objectTracker = {
                     
                     Map.enemyObjects.forEach(enemy => {
                          Map.projectileObjects.slice(Map.projectileObjects.length - 20,Map.projectileObjects.length).forEach(projectile => {
-                              if(Map.methods.utils.checkDistance(enemy, projectile, 100)){
+                              if(Map.methods.utils.checkDistance(enemy, projectile, 300)){
                                         points += 1;
                                         // enemy.speed += points;
                                         // spaceShip.speed += points;
