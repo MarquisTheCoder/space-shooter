@@ -15,9 +15,11 @@
 
         <div id="data-bar">
             <ul>
-                <li id="level">level: 0 </li>
-                <li id="player-health">player-health: health </li>
-                <li id="points">points: 0 </li>
+                <li style="color: black">
+                    <img src="images/heart-icon.png" height="40px"/>:<span id="player-health">0</span>
+                </li>
+                <li id="points"></li>
+                <li id="level"></li>
             </ul>
         </div>
 
@@ -72,7 +74,7 @@
 
                   $('#level').html(`level: ${level}`);
                   $('#points').html(`points: ${points}`);
-                  $('#player-health').html(`health: ${spaceShip.health}`);
+                  $('#player-health').html(`${spaceShip.health}`);
 
                   level = Math.ceil(points / 3);
                   if(spaceShip.health <= 0){

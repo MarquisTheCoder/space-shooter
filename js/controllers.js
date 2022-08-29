@@ -64,7 +64,6 @@ let player = {
 }
 
 let projectile = {
-     interval: null,
      mechanisms:{
           projectileInterval:function(projectile){
                this.interval = setInterval(function(){

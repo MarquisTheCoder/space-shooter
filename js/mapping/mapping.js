@@ -12,9 +12,18 @@
 const Map = {
      methods:{
           destroy: (object) => $(object).remove(),
+          utils:{
+               checkDistance: function(object1, object2, hitBox){
+                    let isHit = Math.abs(object1.xPosition - object2.xPosition) <= hitBox &&
+                         Math.abs(object1.yPosition - object2.yPosition) <= hitBox;
+                    console.log(`IsHit: ${isHit}`)
+                    return isHit;
+               }
+          },
           display:{
+               
                gameOver: function (){
-                    let img = $("<img alt='gameover'/>");
+                    let img = $("<img alt='game-over'/>");
                     img.attr('src','../../images/game-over.png');
                     img.css('height', '600px');
                     img.css('position', 'absolute');
@@ -23,6 +32,7 @@ const Map = {
      
                     $('#map-box').append(img);
                },
+               
                explosion: function(xPosition, yPosition){
                     let img =  $('<img alt="explosion-enemy"/>');
                     img.attr('src', '../../images/explosion.png');
@@ -36,18 +46,24 @@ const Map = {
                          $(img).remove();
                     }, seconds(.4));
                },
+               
                hitMarker: function(xPosition, yPosition){
                     let img = $('<img alt="hit-marker"/>');
                     img.attr('src', '../../images/hit-marker.png');
-                    img.css('height', '100px');
+                    img.css('height', '60px');
                     img.css('position', 'absolute');
                     img.css('top', `${yPosition}px`);
-                    img.css('left',`${xPosition}px`);
+                    img.css('left',`${xPosition + 50}px`);
                     let explosion = new Audio('../../sounds/object-explode.wav').play();
                     $('#map-box').append(img);
+                    
+                    let minus = $('<p>-25</p>');
+                    minus.css('position', 'absolute');
+                    minus.css('top', `${yPosition}`);
+                    minus.css()
                     setTimeout(function(){
                          $(img).remove();
-                    },.4);
+                    },seconds(.4));
                }
           }
      },

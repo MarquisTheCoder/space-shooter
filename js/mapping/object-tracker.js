@@ -15,10 +15,11 @@ let objectTracker = {
                setInterval(function() {
                     
                     Map.enemyObjects.forEach(enemy => {
-                         Map.projectileObjects.forEach(projectile => {
-                              if(Math.abs(enemy.xPosition - projectile.xPosition) <= 200 &&
-                                   Math.abs(enemy.yPosition - projectile.yPosition) <= 100){
+                         Map.projectileObjects.slice(Map.projectileObjects.length - 20,Map.projectileObjects.length).forEach(projectile => {
+                              if(Map.methods.utils.checkDistance(enemy, projectile, 100)){
                                         points += 1;
+                                        // enemy.speed += points;
+                                        // spaceShip.speed += points;
                                         Map.methods.display.explosion(enemy.xPosition, enemy.yPosition);
                                         Map.enemyObjects.splice(Map.enemyObjects.indexOf(enemy), 1);
                                         Map.methods.destroy(enemy.enemyObject);
@@ -28,18 +29,24 @@ let objectTracker = {
                     }
                })
           })
-               },seconds(.00))
+               },seconds(.001));
           },
      playerCollisionTracker:  function (){
                setInterval(function () {
                     Map.enemyObjects.forEach(enemy => {
-                         if (Math.abs(enemy.xPosition - spaceShip.xPosition) <= 50 &&
-                              Math.abs(enemy.yPosition - spaceShip.yPosition) <= 55) {
-                              Map.methods.display.hitMarker(spaceShip.xPosition,spaceShip.yPosition);
+                         if (Map.methods.utils.checkDistance(spaceShip, enemy, 55)){
                               spaceShip.health -= 25;
                          }
                     })
-               }, 150)
+               }, seconds(.1));
+               
+               setInterval(function(){
+                    Map.enemyObjects.forEach(enemy => {
+                         if (Map.methods.utils.checkDistance(spaceShip, enemy, 55)) {
+                              Map.methods.display.hitMarker(spaceShip.xPosition, spaceShip.yPosition);
+                         }
+                    })
+               }, 150);
           },
 }
 
