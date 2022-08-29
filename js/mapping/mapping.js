@@ -44,7 +44,7 @@ const Map = {
                     $('#map-box').append(img);
                     setTimeout(function (){
                          $(img).remove();
-                    }, seconds(.4));
+                    }, seconds(100));
                },
                
                hitMarker: function(xPosition, yPosition){
