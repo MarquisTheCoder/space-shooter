@@ -22,6 +22,16 @@ const Map = {
                     img.css('left', '22vw');
      
                     $('#map-box').append(img);
+               },
+               explosion: function(xPosition, yPosition){
+                    let img =  $('<img alt=""/>');
+                    img.attr('src', '../../images/explosion.png');
+                    img.attr('height', '70px');
+                    img.css('position', 'absolute');
+                    img.css('top', `${yPosition}`);
+                    img.css('left', `${xPosition}`);
+                    
+                    $('#map-box').append(img);
                }
           }
      },

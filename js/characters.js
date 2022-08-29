@@ -70,11 +70,12 @@ function Projectile(playerObject, enemyObject){
         * appending it to the player object at its position
         * with the offset x position by projectile offset.*/
         this.projectileObject = $("<img alt='projectile-object'/>'");
-        this.projectileObject.attr('src', '../images/projectiles/energy-ball.png');
-        this.projectileObject.attr('height', '40px');
+        this.projectileObject.attr('src', '../images/blaster-bullet.png');
+        this.projectileObject.attr('height', '120px');
         this.projectileObject.css('position', 'absolute');
         this.projectileObject.css('top', `${this.yPosition}px`);
         this.projectileObject.css('left',`${this.xPosition}px`);
+        
         $('#map-box').append(this.projectileObject);
         
         
@@ -97,7 +98,8 @@ function Enemy(){
         /*pushing object to the map object to
         * be used for the object tracking system later*/
         Map.enemyObjects.push(this);
-        this.speed = Math.random() * (10 + points) + 7;
+        this.range = 0;
+        this.speed = Math.random() * 15  + 7;
         this.xPositionMax = 1800;
         this.xPositionMin = 1500;
         
@@ -118,7 +120,7 @@ function Enemy(){
         
         /* creating an enemy image object with jquery*/
         this.enemyObject = $("<img alt='enemy-object'/>");
-        this.enemyObject.attr('src','../images/enemy.webp');
+        this.enemyObject.attr('src','../images/enemy-d.webp');
         
         /* sets the css positioning */
         this.enemyObject.css('position', 'absolute');
@@ -135,12 +137,7 @@ function Enemy(){
                 this.enemyObject.css('left', `${this.xPosition}px`);
                 return this.xPosition;
         }
-        /* updates the enemy y position*/
-        // this.updateYPosition = function (){
-        //         this.yPosition -= ;
-        //         this.enemyObject.css('top', `${this.yPosition}px`);
-        //         return this.yPosition;
-        // }
+      
 }
 
 

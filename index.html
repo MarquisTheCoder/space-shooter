@@ -25,7 +25,7 @@
         <div class='level' id="map-box">
             <!--container for player img obj-->
             <div id="player">
-                <img width="125" height="80" src="images/ufo2.png">
+                <img width="125" height="125" src="images/spaceship.png">
             </div>
         </div>
         <!-- mapping metadata -->
@@ -42,30 +42,36 @@
             let points = 0;
             const seconds = (sec) => sec*1000;
 
-             /*attaching #player image to the
-             * new spaceship object*/
-             let spaceShip  = new Player($('#player'));
-             /*Adding keyboard controls to the spaceShip
-             * object*/
 
-             objectTracker.enemyCollisionTracker();
-             objectTracker.playerCollisionTracker();
-             player.controller.movement(spaceShip);
-             player.controller.attack();
-             enemies.moveForward();
-             /*Init gaming loop*/
 
-            setInterval(function(){
+            let createEnemies = setInterval(function(){
                  setTimeout(function (){
                       let x = new Enemy();
                  }, Math.random()* 50 + 25)
 
-            }, seconds(.3) / level)
+            }, seconds(.3) / level);
+            enemies.moveForward();
+
+
+             /*attaching #player image to the
+             * new spaceship object*/
+             let spaceShip  = new Player($('#player'));
+
+             /*Adding keyboard controls to the spaceShip
+             * object*/
+             player.controller.movement(spaceShip);
+             player.controller.attack();
+
+             /*Track all player and non player objects on the map*/
+             objectTracker.enemyCollisionTracker();
+             objectTracker.playerCollisionTracker();
 
              let gameLoop = setInterval(function(){
+
                   $('#level').html(`level: ${level}`);
                   $('#points').html(`points: ${points}`);
                   $('#player-health').html(`health: ${spaceShip.health}`);
+
                   level = Math.ceil(points / 3);
                   if(spaceShip.health <= 0){
                        let explode = new Audio('../../sounds/object-explode.wav');
@@ -76,7 +82,7 @@
 
                        clearInterval(gameLoop);
                   }
-             },1);
+             },50);
 
 
      </script>

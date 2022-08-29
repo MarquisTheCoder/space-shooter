@@ -51,14 +51,15 @@ let player = {
 }
 
 let projectile = {
+     interval: null,
      mechanisms:{
           projectileInterval:function(projectile){
-               let projectileInterval = setInterval(function(){
+               this.interval = setInterval(function(){
                let xPosition = projectile.updateXPosition();
                if(xPosition >= 1450){
                     Map.projectileObjects.splice(projectile, 1)
                     $(projectile.projectileObject).remove();
-                    clearInterval(projectileInterval);
+                    delete  projectile.constructor;
                }
           }, 650 / projectile.speed);
           }
@@ -67,9 +68,15 @@ let projectile = {
 
 let enemies = {
      moveForward: function (){
+          
           let movementIntervals = setInterval(function(){
+               
                Map.enemyObjects.forEach(enemy => {
                     enemy.updateXPosition();
+                    enemy.range += 1;
+                    if(enemy.range >= 2000){
+                         clearInterval()
+                    }
                })
           }, 20);
      }

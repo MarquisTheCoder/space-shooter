@@ -13,27 +13,29 @@ let objectTracker = {
      
           enemyCollisionTracker: function() {
                setInterval(function() {
+                    
                     Map.enemyObjects.forEach(enemy => {
                          Map.projectileObjects.forEach(projectile => {
-                              if(Math.abs(enemy.xPosition - projectile.xPosition) <= 50 &&
-                                   Math.abs(enemy.yPosition - projectile.yPosition) <= 55){
+                              if(Math.abs(enemy.xPosition - projectile.xPosition) <= 200 &&
+                                   Math.abs(enemy.yPosition - projectile.yPosition) <= 100){
                                         points += 1;
-                                        let explode = new Audio('../../sounds/object-explode.wav');
-                                        let x = explode.play();
-                                        Map.methods.destroy(enemy.enemyObject);
+                                        Map.methods.display.explosion(enemy.xPosition, enemy.yPosition);
                                         Map.enemyObjects.splice(Map.enemyObjects.indexOf(enemy), 1);
+                                        Map.methods.destroy(enemy.enemyObject);
                                         delete enemy.constructor;
+                                        let demonDying = new Audio('../../sounds/dying.mp3').play();
+                                       
                     }
                })
           })
-     },seconds(.1))
+               },seconds(.00))
           },
      playerCollisionTracker:  function (){
                setInterval(function () {
                     Map.enemyObjects.forEach(enemy => {
                          if (Math.abs(enemy.xPosition - spaceShip.xPosition) <= 50 &&
                               Math.abs(enemy.yPosition - spaceShip.yPosition) <= 55) {
-                              spaceShip.health -= 100;
+                              spaceShip.health -= 1;
                          }
                     })
                }, 150)
