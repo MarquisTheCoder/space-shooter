@@ -17,7 +17,7 @@ understanding of the View-Model-Controller model.
 
 ### Showcase: 
 ##
- ![example image](https://github.com/MarquisTheCoder/space-shooter/blob/main/images/space-shoopter-example.png?raw=true)
+ ![example image](https://github.com/MarquisTheCoder/space-shooter/blob/main/images/better-example.png?raw=true)
  ## 
  ![example image](https://github.com/MarquisTheCoder/space-shooter/blob/main/images/space-shooter-gameover-example.png?raw=true)
 
