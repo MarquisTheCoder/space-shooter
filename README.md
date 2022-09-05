@@ -13,11 +13,11 @@ understanding of the View-Model-Controller model.
 - incremental difficulty
 - player sounds and explosions
 - hitmarkers
-- screams of the enemy horder
+- screams of the enemy horde!
 
 ### Showcase: 
 ##
- ![example image](https://github.com/MarquisTheCoder/space-shooter/blob/main/images/space-shoopter-example.png?raw=true)
+ ![example image](https://github.com/MarquisTheCoder/space-shooter/blob/main/images/better-example.png?raw=true)
  ## 
  ![example image](https://github.com/MarquisTheCoder/space-shooter/blob/main/images/space-shooter-gameover-example.png?raw=true)
 
