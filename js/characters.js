@@ -55,7 +55,7 @@ function Projectile(playerObject, enemyObject){
         * object array for global object tracking later*/
         Map.projectileObjects.push(this)
         /*projectile speed variable*/
-        this.speed = 5.0;
+        this.speed = 22.0;
         
         /*projectile Y and X offset
         * to put projectile in the middle
