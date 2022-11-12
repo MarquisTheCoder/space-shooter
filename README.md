@@ -4,7 +4,7 @@
 ## Description:
 Space shooter is a game I made in HTML, CSS, and Javascript to showcase my
 understanding of objects and Object Oriented Programming aswell as my 
-understanding of the View-Model-Controller model. 
+understanding of Model-View-Controller conceptually. 
 
 ### Features:
 - object tracking
